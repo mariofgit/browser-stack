@@ -21,27 +21,26 @@ browser-stack/
 
 ## Setup rápido
 
-### 1. Agent (Python)
-
 ```bash
-cd agent
-python -m venv .venv && source .venv/bin/activate
-pip install -e ".[dev]"
-playwright install chromium
-cp .env.example .env   # rellenar BROWSERBASE_API_KEY, BROWSERBASE_PROJECT_ID, etc.
-uvicorn runtime.app:app --port 8012 --reload
-```
+# 1. Primera vez: crea .env, venv Python, npm install y Playwright
+make setup
 
-### 2. UI (Next.js)
+# 2. Edita las claves (obligatorio antes de correr)
+#    agent/.env    → BROWSERBASE_API_KEY, BROWSERBASE_PROJECT_ID (+ OPENAI_API_KEY opcional)
+#    ui/.env.local → AGENT_BASE_URL (default http://localhost:8012, normalmente no hace falta cambiarlo)
 
-```bash
-cd ui
-npm install
-cp .env.example .env.local   # AGENT_BASE_URL=http://localhost:8012
-npm run dev
+# 3. Levantar ambos servicios en paralelo
+make dev
 ```
 
 Abre [http://localhost:3000](http://localhost:3000) y pulsa **Run morning shot**.
+
+También puedes levantarlos por separado:
+
+```bash
+make agent   # solo FastAPI en :8012
+make ui      # solo Next.js en :3000
+```
 
 ## Variables de entorno clave
 
