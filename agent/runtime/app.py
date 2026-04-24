@@ -1,4 +1,4 @@
-"""WSJ morning shot — standalone agent (no NAP audit, no SDR/CRM)."""
+"""Finance agent — WSJ morning shot via Browserbase scraping (no NAP audit, no SDR/CRM)."""
 from __future__ import annotations
 
 import asyncio
@@ -16,7 +16,7 @@ from pydantic import BaseModel, Field
 
 from runtime.browserbase_wsj import REQUIRES_AUTH_STATE, fetch_wsj_pages_via_browserbase
 
-app = FastAPI(title="WSJ Morning Shot Agent")
+app = FastAPI(title="Finance Agent")
 
 WSJ_SUMMARY_DISCLAIMER = (
     "Informational summary based on sources named in the facts pack; "
@@ -415,7 +415,7 @@ def _openai_wsj_summary_sync(compact: dict) -> tuple[dict | None, list[str]]:
 
 @app.get("/health")
 async def health():
-    return {"ok": True, "agent": "wsj-morning-shot"}
+    return {"ok": True, "agent": "finance-agent"}
 
 
 @app.post("/wsj-morning-shot")
