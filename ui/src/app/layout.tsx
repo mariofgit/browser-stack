@@ -2,8 +2,8 @@ import "./globals.css";
 import type { ReactNode } from "react";
 
 export const metadata = {
-  title: "WSJ Morning Shot",
-  description: "WSJ morning shot via Browserbase scraping",
+  title: "Finance Agent — Neuforce",
+  description: "Morning shot (WSJ y NYT) y resumen de noticias para mercados financieros",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

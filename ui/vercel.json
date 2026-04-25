@@ -1,0 +1,14 @@
+{
+  "framework": "nextjs",
+  "env": {
+    "AGENT_BASE_URL": "@agent_base_url"
+  },
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-store" }
+      ]
+    }
+  ]
+}
